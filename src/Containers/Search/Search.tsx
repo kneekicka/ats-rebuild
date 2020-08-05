@@ -13,7 +13,7 @@ const Search = () => {
   const handlePersonSubmit = (event: any) => {
     const form = event.currentTarget;
     console.log("name", form.formSearchName.value);
-    console.log("surname", form.formSearchSurname.value);
+    console.log("last name", form.formSearchSurname.value);
     console.log("email", form.formSearchEmail.value);
     event.preventDefault();
     event.stopPropagation();
@@ -30,7 +30,7 @@ const Search = () => {
                 <Form.Control required type="text" placeholder="Name..." />
               </Form.Group>
               <Form.Group controlId="formSearchSurname">
-                <Form.Control required type="text" placeholder="Surname..." />
+                <Form.Control required type="text" placeholder="Last name..." />
               </Form.Group>
               <Form.Group controlId="formSearchEmail">
                 <Form.Control required type="email" placeholder="Email..." />
