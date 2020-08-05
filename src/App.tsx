@@ -1,9 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Search from './Containers/Search/Search';
-import NavBar from './Components/Navbar/Navbar';
+import React from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Search from "./Containers/Search/Search";
+import NavBar from "./Components/Navbar/Navbar";
 
 const App = () => {
   return (
@@ -12,6 +11,6 @@ const App = () => {
       <Search></Search>
     </div>
   );
-}
+};
 
 export default App;
