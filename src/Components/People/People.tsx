@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Row, Col } from "react-bootstrap";
 import "./People.css";
 import Person from "../Person/Person";
 import PeoplePagination from "../Pagination/Pagination";
+import PeopleDropDown from "../PeopleDropdown/PeopleDropdown";
 import IPerson from "../../Models/Person.model";
 import mockedPeople from "../../MockData/people";
 
@@ -11,9 +12,6 @@ const People = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [peoplePerPage, setPeoplePerPage] = useState(10);
-
-  // change page
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const fetchPeople = async () => {
@@ -26,10 +24,26 @@ const People = () => {
     fetchPeople();
   }, []);
 
+  // change page
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const setPeoplePerPageNumber = (perPageNumber: number) => {
+    if (currentPage > 1) {
+      setCurrentPage(1);
+    }
+    setPeoplePerPage(perPageNumber);
+  };
+
   // Get current posts
   const indexOfLastPerson = currentPage * peoplePerPage;
   const indexOfFirstPost = indexOfLastPerson - peoplePerPage;
   const currentPeople = people.slice(indexOfFirstPost, indexOfLastPerson);
+  const showingPeople = (
+    <p className="People-showing">
+      Showing {indexOfLastPerson + 1 - peoplePerPage} to{" "}
+      {indexOfLastPerson >= people.length ? people.length : indexOfLastPerson}{" "}
+      of {people.length} entries
+    </p>
+  );
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -37,7 +51,13 @@ const People = () => {
 
   return (
     <div className="People">
-      <h3 className="People-title">People</h3>
+      <div className="People-title">
+        <h3>People</h3>
+        <PeopleDropDown
+          perPage={peoplePerPage}
+          setPeoplePerPage={setPeoplePerPageNumber}
+        />
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -54,12 +74,17 @@ const People = () => {
           ))}
         </tbody>
       </Table>
-      <PeoplePagination
-        totalPeople={people.length}
-        peoplePerPage={peoplePerPage}
-        active={currentPage}
-        paginate={paginate}
-      />
+      <Row>
+        <Col>{showingPeople}</Col>
+        <Col>
+          <PeoplePagination
+            totalPeople={people.length}
+            peoplePerPage={peoplePerPage}
+            active={currentPage}
+            paginate={paginate}
+          />
+        </Col>
+      </Row>
     </div>
   );
 };
