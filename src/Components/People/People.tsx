@@ -36,6 +36,9 @@ const People = () => {
   };
 
   const filterPeople = (event: any) => {
+    if (currentPage > 1) {
+      setCurrentPage(1);
+    }
     const searchTerm = escape(event.target.value.toLowerCase());
     const currentPeople = [...people];
 
