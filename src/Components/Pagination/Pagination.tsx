@@ -25,7 +25,24 @@ const PeoplePagination = (props: any) => {
 
   return (
     <div className="People-pagination">
-      <Pagination>{pageNumbers}</Pagination>
+      <Pagination>
+        <Pagination.Prev
+          disabled={props.active - 1 === 0}
+          onClick={() => {
+            props.paginate(props.active - 1);
+          }}
+        />
+        {pageNumbers}
+        <Pagination.Next
+          disabled={
+            props.active + 1 >
+            Math.ceil(props.totalPeople / props.peoplePerPage)
+          }
+          onClick={() => {
+            props.paginate(props.active + 1);
+          }}
+        />
+      </Pagination>
     </div>
   );
 };
