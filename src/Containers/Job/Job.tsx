@@ -2,6 +2,7 @@ import React from "react";
 import "./Job.css";
 import { Tab, Tabs } from "react-bootstrap";
 import People from "../../Components/People/People";
+import Detail from "../../Components/Detail/Detail";
 
 const Job = () => {
   return (
@@ -14,7 +15,7 @@ const Job = () => {
         <People></People>
       </Tab>
       <Tab eventKey="detail" title="Detail">
-        <p>Detail</p>
+        <Detail />
       </Tab>
     </Tabs>
   );
