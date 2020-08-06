@@ -30,7 +30,7 @@ const Search = () => {
                 <Form.Control required type="text" placeholder="Name..." />
               </Form.Group>
               <Form.Group controlId="formSearchSurname">
-                <Form.Control required type="text" placeholder="Last name..." />
+                <Form.Control required type="text" placeholder="Last Name..." />
               </Form.Group>
               <Form.Group controlId="formSearchEmail">
                 <Form.Control required type="email" placeholder="Email..." />
