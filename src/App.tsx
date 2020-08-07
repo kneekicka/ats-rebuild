@@ -5,6 +5,7 @@ import "./App.css";
 import Search from "./Containers/Search/Search";
 import NavBar from "./Components/Navbar/Navbar";
 import Job from "./Containers/Job/Job";
+import PeopleContainer from "./Containers/People/People";
 
 const App = () => {
   return (
@@ -18,6 +19,10 @@ const App = () => {
           <Route path="/job">
             <NavBar showSearch={false}></NavBar>
             <Job />
+          </Route>
+          <Route path="/people">
+            <NavBar showSearch={false}></NavBar>
+            <PeopleContainer />
           </Route>
           <Route path="/">
             <NavBar showSearch={true}></NavBar>
